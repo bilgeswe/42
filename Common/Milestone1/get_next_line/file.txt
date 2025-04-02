@@ -1,0 +1,129 @@
+Introduction
+Lütfen aşağıdaki kurallara uyunuz:
+
+- Tüm değerlendirme süreci boyunca kibar, nazik, saygılı ve yapıcı olun.
+Topluluğun iyiliği buna bağlıdır.
+
+- Değerlendirilen öğrenci veya grup ile projedeki olası açıkları veya
+eksiklikleri önceden tanımlayınız. Belirlenmiş olabilecek sorunları konuşmak
+ve tartışmak için zaman ayırın.
+
+- Diğer öğrencilerin, projenin talimatlarının ve işlevlerinin
+kapsamını anlamaları konusunda bazı farklılıklar olabileceğini göz önünde
+bulundurmalısınız. Her zaman açık fikirli olun ve onları mümkün olduğunca
+dürüst bir şekilde değerlendirin. Bu akran değerlendirmesi ancak ve ancak
+değerlendirme ciddi bir şekilde yapıldığında faydalıdır.
+
+Guidelines
+- Yalnızca değerlendirilen öğrencinin veya grubun Git reposunda olan çalışmaya
+not verin.
+
+- Git reposunun öğrenciye/öğrencilere ait olduğunu iki kez kontrol edin.
+Projenin, beklenen proje olduğundan emin olun. Ayrıca, 'git clone' kullanımının
+boş bir klasörde yapıldığından emin olun.
+
+- Resmi Git reposunda olmayan bir şeyi değerlendirmenizi önlemek için,
+kötü niyetli bir 'alias' kullanılmadığından dikkatlice kontrol ederek emin olun.
+
+- Sürprizlerden kaçınmak için eğer varsa, not vermeyi kolaylaştırmak için
+kullanılan tüm 'script' dosyalarını (test veya otomasyon komut dosyaları)
+birlikte inceleyin.
+
+- Eğer değerlendireceğiniz projeyi daha yapmadıysanız, değerlendirme sürecine
+başlamadan önce projenin subjectini tamamen okumanız gerekmektedir.
+
+- Boş bir repoyu, işlevsiz bir programı, bir Norm hatasını, hileyi vb.
+bildirmek için mevcut 'flag'leri kullanın.
+Bu durumlarda değerlendirme süreci sona erer ve final notu 0'dır. Kopya
+durumunda ise final notu -42 olur. Kopya dışındaki durumlarda, değerlendirilen
+öğrenciyle birlikte teslim edilen çalışmanın gözden geçirilmesi ve gelecekte
+tekrarlanmaması gereken hataların tespit edilmesi şiddetle tavsiye edilir.
+
+- Boş bir repoyu, işlevsiz bir programı, segfault hatasını, bir Norm hatasını,
+beklenmedik herhangi bir davranışı, hileyi vb. bildirmek için mevcut 'flag'leri
+kullanın. Bu durumlarda değerlendirme süreci sona erer ve final notu 0'dır. Kopya
+durumunda ise final notu -42 olur. Kopya dışındaki durumlarda, değerlendirilen
+öğrenciyle birlikte teslim edilen çalışmanın gözden geçirilmesi ve gelecekte
+tekrarlanmaması gereken hataların tespit edilmesi şiddetle tavsiye edilir.
+
+- Ayrıca, herhangi bir memory leak (bellek sızıntısı) olmadığını da
+doğrulamanız gerekir. Heap üzerinde ayrılan herhangi bir hafıza, program
+sona ermeden önce uygun bir şekilde 'free' edilmelidir (serbest bırakılmalıdır).
+Leak kontrolü yapmak için bilgisayarınızda bulunan araçları kullanabilirsiniz
+(leaks, valgrind, e_fence, etc). Eğer memory leak var ise uygun flag'i işaretleyin.
+
+Attachments
+ subject.pdf
+Zorunlu Bölüm
+Norminette
+
+Norminette'i çalıştırın. Eğer bir hata varsa, değerlendirme burada durur.
+
+Devam edebilir ve kodun işleyişi/implementasyonu hakkında tartışabilirsiniz,
+fakat proje puanlandırılmayacaktır. Uygun flag'i işaretleyin.
+
+Derleme
+
+Proje her zamanki flaglerle ve -D BUFFER_SIZE flagiyle derlenebilmelidir.
+Proje yalnızca her zamanki flagler kullanıldığında da derlenebilmelidir: -Wall
+-Wextra -Werror. Eğer bir hata oluşursa, değerlendirme burada biter.
+
+Devam edebilir ve kodun işleyişi/implementasyonu hakkında tartışabilirsiniz,
+fakat proje puanlandırılmayacaktır. Uygun flag'i işaretleyin.
+
+Hata Yönetimi
+
+EN AZINDAN aşağıdaki testleri deneyerek hata yönetimini test edebilirsiniz.
+Bu testlerin üzerine kendi testlerinizi eklemelisiniz.
+
+get_next_line() fonksiyonuna okunması imkansız, rastgele bir file descriptor verin, örneğin 42. Fonksiyon NULL döndürmelidir.
+read ve malloc fonksiyonlarından dönen hataları kontrol edin. Eğer bir sorunla karşılaşırsanız, değerlendirme burada durur.
+Devam edebilir ve kodun işleyişi/implementasyonu hakkında tartışabilirsiniz,
+fakat proje puanlandırılmayacaktır. Uygun flag'i işaretleyin.
+
+Testler
+
+Değerlendiren kişi olarak, aşağıdaki kontrolleri sağlayan bir main fonskiyon
+yazmalısınız:
+
+Herhangi bir hata doğrultusunda get_next_line fonksiyonu NULL döndürür.
+Hata yoksa fonksiyon, okuduğu satırı, eğer dosyanın sonuna gelinmediyse, her zaman sonunda bir '\n' karakteri ile döndürür.
+Aşağıdaki durumların mümkün olan bütün varyasyonlarını deneyin:
+
+Büyük BUFFER_SIZE (>1024)
+Küçük BUFFER_SIZE (< 8, ve 1)
+BUFFER_SIZE eşittir okunacak satırın uzunluğu
+Satır uzunluğu ile BUFFER_SIZE arasında (+/-) 1 byte fark
+
+stdin üzerinden okuma
+
+Dosya üzerinden okuma
+
+(Çoğul/Tekil) Uzun satır (2 bin+ karakter)
+
+(Çoğul/Tekil) Kısa satır (< 4 karakter, hatta 1)
+
+(Çoğul/Tekil) Boş satır
+
+Bu testler kişinin get_next_line fonksiyonunun ne kadar güçlü olduğunu ölçmenizde
+yardımcı olacaktır.
+Eğer bir hata varsa, değerlendirme burada durur.
+
+Bonus Bölüm
+Bonus bölüm, yalnızca zorunlu bölüm KUSURSUZ ise değerlendirilecektir. Kusursuz, zorunlu bölümün tamamen yapıldığı ve sorunsuz çalıştığı anlamına gelir. TÜM zorunlu gereksinimleri tamamlamadıysanız, bonus bölüm hiçbir şekilde değerlendirilmeyecektir.
+
+Çoğul fd Okuması
+
+Öncesinde gerçekleştirdiğiniz testlerin aynısını, birden fazla get_next_line
+fonksiyonuna farklı file descriptorlar vererek gerçekleştirin. Her get_next_line'ın
+doğru satırı döndürdüğünden emin olun. Var olmayan bir fd ile fonksiyonu çalıştırmayı
+deneyerek hata yönetimini kontrol edin.
+
+Tek static Değişken
+
+Kodu kontrol ederek tek bir static değişken olduğundan emin olun.
+Eğer yalnızca bir static değişken varsa puanı verin.
+
+Ratings
+Don’t forget to check the flag corresponding to the defense
+
