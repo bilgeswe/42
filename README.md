@@ -1,3 +1,7 @@
+#  Holy Graph
+<img width="1440" alt="holy_Graph" src="https://github.com/user-attachments/assets/c1a98631-a5d2-4a57-9af9-ff9645849d23" />
+
+
 # 🧠 42 Projects – Dive Deep, Climb High 🌊🏔
 
 Welcome to my collection of projects from the legendary [42 Network](https://42.fr/en/homepage/) – where learning is 100% hands-on, peer-powered, and fueled by pure curiosity. Whether you're here to peek into my progress or dive into the code, you're more than welcome!
